@@ -3,17 +3,16 @@ import random as r
 text = 'Heft Haus Sofa Liebe Hund Katze Auto'
 words = set(text.split())
 wrong_tries = set()
-p_word = r.choice(list(words))
-p_length = len(p_word)
-board_done = [x + ' ' for x in p_word]
-board = ['_ ' for x in p_word]
+playing_word = r.choice(list(words))
+p_w = playing_word.casefold()
+board_done = [x + ' ' for x in playing_word]
+board = ['_ ' for x in playing_word]
 
 while board != board_done and len(wrong_tries) < 4:
     print('\n' + ''.join(board) + '\n\n' +
           'Schon probiert: ' + ''.join([x + ' ' for x in wrong_tries]) + '\n'
           'Versuche: ' + str(4 - len(wrong_tries)))
     let = input('Welcher Buchstabe? ').casefold()
-    p_w = p_word.casefold()
     if let == p_w:
         board = board_done
     elif let == '':
